@@ -48,7 +48,9 @@ gulp.task('js', () => {
     browserify({
       entries: filePath
     })
-      .transform(babelify)
+      .transform(babelify.configure({
+        comments: false // コメント非表示
+      }))
       .bundle()
       .pipe(source(fileName))
       .pipe(gulp.dest('../js/'));
